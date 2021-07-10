@@ -63,14 +63,14 @@
                         <li class="nav-item <?=(Route::current()->uri() == '/' ? 'active':'')?>">
                             <a class="nav-link" href="/">{{ __('Home') }}</a>
                         </li>
-                        {{-- <li class="nav-item <?=(Route::current()->uri() == 'posts' ? 'active':'')?>">
+                        <li class="nav-item <?=(Route::current()->uri() == 'posts' ? 'active':'')?>">
                             <a class="nav-link" href="/posts">{{ __('Posts') }}</a>
-                        </li> --}}
+                        </li>
                         @endif
 
                         @if (auth()->user()->is_admin)
-                        <li class="nav-item <?=(Route::current()->uri() == '#' ? 'active':'')?>">
-                            <a class="nav-link" href="/#">{{ __('Account Management') }}</a>
+                        <li class="nav-item <?=(Route::current()->uri() == 'account' ? 'active':'')?>">
+                            <a class="nav-link" href="/account">{{ __('Account Management') }}</a>
                         </li>
                         <li class="nav-item <?=(Route::current()->uri() == '/' ? 'active':'')?>">
                             <a class="nav-link" href="/">{{ __('Report') }}</a>
@@ -82,12 +82,12 @@
                         <li class="nav-item <?=(Route::current()->uri() == '/' ? 'active':'')?>">
                             <a class="nav-link" href="/">{{ __('Reports') }}</a>
                         </li>
-                        <li class="nav-item <?=(Route::current()->uri() == '/' ? 'active':'')?>">
-                            <a class="nav-link" href="/">{{ __('Enumnators') }}</a>
+                        <li class="nav-item <?=(Route::current()->uri() == 'account/users' ? 'active':'')?>">
+                            <a class="nav-link" href="/account/users">{{ __('Enumnators') }}</a>
                         </li>
 
                         @elseif(auth()->user()->is_enumerator)
-                        <li class="nav-item <?=(Route::current()->uri() == '/' ? 'active':'')?>">
+                        <li class="nav-item <?=(Route::current()->uri() == '/#' ? 'active':'')?>">
                             <a class="nav-link" href="/">{{ __('Houses') }}</a>
                         </li>
 
