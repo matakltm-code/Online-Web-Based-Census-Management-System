@@ -83,8 +83,8 @@
                             class="nav-item <?=(Route::current()->uri() == '/counting-report-list-card-of-enumnators' ? 'active':'')?>">
                             <a class="nav-link" href="/">{{ __('Enumerators Report') }}</a>
                         </li>
-                        <li class="nav-item <?=(Route::current()->uri() == '/send-report-for-admin' ? 'active':'')?>">
-                            <a class="nav-link" href="/">{{ __('Send Report') }}</a>
+                        <li class="nav-item <?=(Route::current()->uri() == 'send-report' ? 'active':'')?>">
+                            <a class="nav-link" href="/send-report">{{ __('Send Report') }}</a>
                         </li>
                         <li class="nav-item <?=(Route::current()->uri() == 'account/users' ? 'active':'')?>">
                             <a class="nav-link" href="/account/users">{{ __('Enumnators') }}</a>
@@ -99,8 +99,8 @@
                         <li class="nav-item <?=(Route::current()->uri() == '/' ? 'active':'')?>">
                             <a class="nav-link" href="/">{{ __('Home') }}</a>
                         </li>
-                        <li class="nav-item <?=(Route::current()->uri() == 'feedback-for-admin' ? 'active':'')?>">
-                            <a class="nav-link" href="/feedback">{{ __('Feedback') }}</a>
+                        <li class="nav-item <?=(Route::current()->uri() == 'send-feedback' ? 'active':'')?>">
+                            <a class="nav-link" href="/send-feedback">{{ __('Send Feedback') }}</a>
                         </li>
                         @endif
 

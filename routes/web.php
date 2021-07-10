@@ -72,6 +72,12 @@ Route::post('/publish', [PublishController::class, 'store']);
 
 // supervisor
 
+Route::get('send-report', [MessageController::class, 'send_report_for_admin']);
+Route::post('send-report', [MessageController::class, 'store_send_report_for_admin']);
+
+
+
+
 // enumerator
 Route::get('/houses', [HouseController::class, 'index']);
 Route::get('/houses/create', [HouseController::class, 'create']);
@@ -82,3 +88,6 @@ Route::patch('/houses/{house}', [HouseController::class, 'update']);
 Route::delete('/houses/{house}', [HouseController::class, 'destroy']);
 
 // resident
+
+Route::get('send-feedback', [MessageController::class, 'send_feedback_for_admin']);
+Route::post('send-feedback', [MessageController::class, 'store_send_feedback_for_admin']);

@@ -44,11 +44,62 @@ class MessageController extends Controller
 
     // supervisor
     // |-> send report for admin
+    public function send_report_for_admin()
+    {
+        return view('supervisor.report.create');
+    }
+    public function store_send_report_for_admin(Request $request)
+    {
+        // Check user is supervisor
+        if (auth()->user()->user_type != 'supervisor') {
+            return redirect('/')->with('error', 'Your are not allowed to see this page');
+        }
+        // dd($request);
+        $data = $request->validate([
+            'title' => 'required|string',
+            'detail' => 'required|string'
+        ]);
 
+        Message::create([
+            'user_id' => auth()->user()->id,
+            'sender_user_type' => 'supervisor',
+            'reciver_user_type' => 'admin',
+            'title' => $data['title'],
+            'detail' => $data['detail'],
+            'message_type' => 'report',
+        ]);
+        return back()->with('success', 'Report sent!');
+    }
 
 
     // resident
     // |-> send feedback for admin
+    public function send_feedback_for_admin()
+    {
+        return view('resident.feedback.create');
+    }
+    public function store_send_feedback_for_admin(Request $request)
+    {
+        // Check user is resident
+        if (auth()->user()->user_type != 'resident') {
+            return redirect('/')->with('error', 'Your are not allowed to see this page');
+        }
+        // dd($request);
+        $data = $request->validate([
+            'title' => 'required|string',
+            'detail' => 'required|string'
+        ]);
+
+        Message::create([
+            'user_id' => auth()->user()->id,
+            'sender_user_type' => 'resident',
+            'reciver_user_type' => 'admin',
+            'title' => $data['title'],
+            'detail' => $data['detail'],
+            'message_type' => 'feedback',
+        ]);
+        return back()->with('success', 'Thank you for your feedback!');
+    }
 
 
     public function index()
