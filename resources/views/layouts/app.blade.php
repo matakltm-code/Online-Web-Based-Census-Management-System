@@ -27,7 +27,7 @@
             {{-- <nav class="navbar navbar-expand-md navbar-dark bg-warning shadow-sm"> --}}
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                    {{ config('app.name', 'Census Managment Systsem') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -57,13 +57,59 @@
                         </li>
                         @endif
                         @else
+
+                        {{-- for not resident only --}}
+                        @if (!auth()->user()->is_resident)
+                        <li class="nav-item <?=(Route::current()->uri() == '/' ? 'active':'')?>">
+                            <a class="nav-link" href="/">{{ __('Home') }}</a>
+                        </li>
+                        <li class="nav-item <?=(Route::current()->uri() == 'posts' ? 'active':'')?>">
+                            <a class="nav-link" href="/posts">{{ __('Posts') }}</a>
+                        </li>
+                        @endif
+
+                        @if (auth()->user()->is_admin)
+                        <li class="nav-item <?=(Route::current()->uri() == '#' ? 'active':'')?>">
+                            <a class="nav-link" href="/#">{{ __('Account Management') }}</a>
+                        </li>
+                        <li class="nav-item <?=(Route::current()->uri() == '/' ? 'active':'')?>">
+                            <a class="nav-link" href="/">{{ __('Report') }}</a>
+                        </li>
+                        <li class="nav-item <?=(Route::current()->uri() == '/' ? 'active':'')?>">
+                            <a class="nav-link" href="/">{{ __('Feedback') }}</a>
+                        </li>
+                        @elseif(auth()->user()->is_supervisor)
+                        <li class="nav-item <?=(Route::current()->uri() == '/' ? 'active':'')?>">
+                            <a class="nav-link" href="/">{{ __('Reports') }}</a>
+                        </li>
+                        <li class="nav-item <?=(Route::current()->uri() == '/' ? 'active':'')?>">
+                            <a class="nav-link" href="/">{{ __('Enumnators') }}</a>
+                        </li>
+
+                        @elseif(auth()->user()->is_enumerator)
+                        <li class="nav-item <?=(Route::current()->uri() == '/' ? 'active':'')?>">
+                            <a class="nav-link" href="/">{{ __('Houses') }}</a>
+                        </li>
+
+                        @elseif(auth()->user()->is_resident)
+                        <li class="nav-item <?=(Route::current()->uri() == '/' ? 'active':'')?>">
+                            <a class="nav-link" href="/">{{ __('Home') }}</a>
+                        </li>
+                        @endif
+
                         <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle text-capitalize" href="#"
+                                role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{ Auth::user()->name }}
                             </a>
 
+
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item <?=(Route::current()->uri() == 'profile' ? 'active':'')?>"
+                                    href="/profile">
+                                    Profile
+                                </a>
+
                                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
@@ -81,9 +127,90 @@
         </nav>
 
         <main class="py-4">
+            @include('inc.messages')
             @yield('content')
         </main>
     </div>
+    {{-- CKeditor files --}}
+    <script src="/ckeditor5/ckeditor.js"></script>
+    <script src="/ckeditor5/ckeditor.js.map"></script>
+    <script>
+        const watchdog = new CKSource.EditorWatchdog();
+
+    window.watchdog = watchdog;
+
+    watchdog.setCreator( ( element, config ) => {
+        return CKSource.Editor
+            .create( element, config )
+            .then( editor => {
+
+
+
+
+                return editor;
+            } )
+    } );
+
+    watchdog.setDestructor( editor => {
+
+
+
+        return editor.destroy();
+    } );
+
+    watchdog.on( 'error', handleError );
+
+    watchdog
+        .create( document.querySelector( '.editor' ), {
+
+            toolbar: {
+                items: [
+                    'heading',
+                    '|',
+                    'underline',
+                    'bold',
+                    'italic',
+                    'link',
+                    'bulletedList',
+                    'numberedList',
+                    '|',
+                    'outdent',
+                    'indent',
+                    '|',
+                    'undo',
+                    'redo',
+                    '-',
+                    'alignment',
+                    'fontBackgroundColor',
+                    'fontColor',
+                    'fontFamily',
+                    'fontSize',
+                    'highlight',
+                    'horizontalLine',
+                    'subscript',
+                    'superscript',
+                    'strikethrough',
+                    'insertTable',
+                    'blockQuote'
+                ],
+                shouldNotGroupWhenFull: true
+            },
+            language: 'en',
+            licenseKey: '',
+
+
+
+        } )
+        .catch( handleError );
+
+    function handleError( error ) {
+        console.error( 'Oops, something went wrong!' );
+        console.error( 'Please, report the following error on https://github.com/ckeditor/ckeditor5/issues with the build id and the error stack trace:' );
+        console.warn( 'Build id: 8uo7e3v0si9i-uk35tb5rkyg' );
+        console.error( error );
+    }
+
+    </script>
 </body>
 
 </html>
