@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ChangepasswordController;
+use App\Http\Controllers\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,6 +33,15 @@ Route::patch('/profile/{profile}', [ProfileController::class, 'update']);
 Route::get('/profile/change-password', [ChangepasswordController::class, 'index']);
 Route::post('/profile/change-password', [ChangepasswordController::class, 'store']);
 
+// Posts controller
+// Route::resource('posts', [PostController::class]);
+Route::get('/posts', [PostController::class, 'index']);
+Route::get('/posts/create', [PostController::class, 'create']);
+Route::post('/posts', [PostController::class, 'store']);
+Route::get('/posts/{post}', [PostController::class, 'show']);
+Route::get('/posts/{post}/edit', [PostController::class, 'edit']);
+Route::patch('/posts/{post}', [PostController::class, 'update']);
+Route::delete('/posts/{post}', [PostController::class, 'destroy']);
 
 
 

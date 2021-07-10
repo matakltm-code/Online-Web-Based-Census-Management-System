@@ -63,9 +63,9 @@
                         <li class="nav-item <?=(Route::current()->uri() == '/' ? 'active':'')?>">
                             <a class="nav-link" href="/">{{ __('Home') }}</a>
                         </li>
-                        <li class="nav-item <?=(Route::current()->uri() == 'posts' ? 'active':'')?>">
+                        {{-- <li class="nav-item <?=(Route::current()->uri() == 'posts' ? 'active':'')?>">
                             <a class="nav-link" href="/posts">{{ __('Posts') }}</a>
-                        </li>
+                        </li> --}}
                         @endif
 
                         @if (auth()->user()->is_admin)
