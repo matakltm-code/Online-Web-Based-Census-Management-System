@@ -72,11 +72,11 @@
                         <li class="nav-item <?=(Route::current()->uri() == 'account' ? 'active':'')?>">
                             <a class="nav-link" href="/account">{{ __('Account Management') }}</a>
                         </li>
-                        <li class="nav-item <?=(Route::current()->uri() == '/' ? 'active':'')?>">
-                            <a class="nav-link" href="/">{{ __('Supervisors Report') }}</a>
+                        <li class="nav-item <?=(Route::current()->uri() == 'supervisor-reports' ? 'active':'')?>">
+                            <a class="nav-link" href="/supervisor-reports">{{ __('Supervisors Report') }}</a>
                         </li>
-                        <li class="nav-item <?=(Route::current()->uri() == '/' ? 'active':'')?>">
-                            <a class="nav-link" href="/">{{ __('Residents Feedback') }}</a>
+                        <li class="nav-item <?=(Route::current()->uri() == 'resident-feedbacks' ? 'active':'')?>">
+                            <a class="nav-link" href="/resident-feedbacks">{{ __('Residents Feedback') }}</a>
                         </li>
                         @elseif(auth()->user()->is_supervisor)
                         <li

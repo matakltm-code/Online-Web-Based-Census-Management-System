@@ -55,7 +55,7 @@ class CreateMembersTable extends Migration
             $table->integer('no_daughters');
             $table->integer('male');
             $table->integer('female');
-            $table->timestamp('date');
+            // $table->timestamp('date');
 
             $table->timestamps();
         });

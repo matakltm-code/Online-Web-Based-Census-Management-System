@@ -7,6 +7,9 @@ use App\Http\Controllers\ChangepasswordController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\HouseController;
+use App\Http\Controllers\MessageController;
+use App\Http\Controllers\PublishController;
+use App\Models\Publish;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,7 +23,15 @@ use App\Http\Controllers\HouseController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $published_reoprt = Publish::latest()->first();
+    // dd($published_reoprt);
+    if ($published_reoprt != null) {
+        return view('publish-welcome', [
+            'published_reoprt' => $published_reoprt
+        ]);
+    } else {
+        return view('welcome');
+    }
 });
 
 Auth::routes();
@@ -53,6 +64,11 @@ Route::post('/account', [AccountController::class, 'store']);
 Route::get('/account/users', [AccountController::class, 'all_users']); // also accessible in supervisor nav tab
 Route::post('/account/enable-disable', [AccountController::class, 'enable_disable_account']);
 
+Route::get('/supervisor-reports', [MessageController::class, 'view_report_from_supervisor']);
+Route::get('/resident-feedbacks', [MessageController::class, 'view_feedback_from_resident']);
+
+Route::get('/publish', [PublishController::class, 'index']);
+Route::post('/publish', [PublishController::class, 'store']);
 
 // supervisor
 
