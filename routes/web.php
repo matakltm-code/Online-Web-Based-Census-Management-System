@@ -6,6 +6,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ChangepasswordController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\AccountController;
+use App\Http\Controllers\HouseController;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,14 +50,19 @@ Route::delete('/posts/{post}', [PostController::class, 'destroy']);
 // admin
 Route::get('/account', [AccountController::class, 'index']);
 Route::post('/account', [AccountController::class, 'store']);
-Route::get('/account/users', [AccountController::class, 'all_users']);
+Route::get('/account/users', [AccountController::class, 'all_users']); // also accessible in supervisor nav tab
 Route::post('/account/enable-disable', [AccountController::class, 'enable_disable_account']);
 
 
 // supervisor
 
-
 // enumerator
-
+Route::get('/houses', [HouseController::class, 'index']);
+Route::get('/houses/create', [HouseController::class, 'create']);
+Route::post('/houses', [HouseController::class, 'store']);
+Route::get('/houses/{house}', [HouseController::class, 'show']);
+Route::get('/houses/{house}/edit', [HouseController::class, 'edit']);
+Route::patch('/houses/{house}', [HouseController::class, 'update']);
+Route::delete('/houses/{house}', [HouseController::class, 'destroy']);
 
 // resident
