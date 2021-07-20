@@ -10,6 +10,22 @@ class House extends Model
     use HasFactory;
     protected $guarded = [];
 
+
+    /**
+     * Get the user that owns the House
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id', 'id');
+    }
+
+    public function region()
+    {
+        return $this->belongsTo(Region::class, 'region_id', 'id');
+    }
+
     /**
      * Get all of the memebers for the House
      *
@@ -26,7 +42,7 @@ class House extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function deaths()
+    public function deceased()
     {
         return $this->hasMany(Death::class, 'house_id', 'id');
     }

@@ -20,14 +20,14 @@ class CreateMembersTable extends Migration
 
             $table->integer('kebele_id_number')->nullable();
 
-            $table->timestamp('birth_date');
+            $table->date('birth_date');
             $table->char('sex', 1);
 
             $table->integer('religion_id'); // from religions table
             $table->integer('mother_tongue_language_id'); // from mother_tongue_languages table
 
             $table->boolean('is_disable');
-            $table->string('disability_cause');
+            $table->string('disability_cause')->nullable();
 
             $table->boolean('is_migrant');
             $table->integer('p_region_id')->nullable();

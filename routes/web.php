@@ -83,6 +83,11 @@ Route::get('/houses', [HouseController::class, 'index']);
 Route::get('/houses/create', [HouseController::class, 'create']);
 Route::post('/houses', [HouseController::class, 'store']);
 Route::get('/houses/{house}', [HouseController::class, 'show']);
+
+Route::get('/houses/{house}/add-memeber/{memeberType}', [HouseController::class, 'add_memeber']);
+Route::post('/houses/add-alive-memeber', [HouseController::class, 'store_alive']);
+Route::post('/houses/add-deceased-memeber', [HouseController::class, 'store_deceased']);
+
 Route::get('/houses/{house}/edit', [HouseController::class, 'edit']);
 Route::patch('/houses/{house}', [HouseController::class, 'update']);
 Route::delete('/houses/{house}', [HouseController::class, 'destroy']);

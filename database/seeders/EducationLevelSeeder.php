@@ -14,7 +14,7 @@ class EducationLevelSeeder extends Seeder
      */
     public function run()
     {
-        // Create 10
-        EducationLevel::factory()->times(4)->create();
+        // Create 10 -> add none education level type for non ilitrate persons
+        EducationLevel::factory()->times(5)->create();
     }
 }

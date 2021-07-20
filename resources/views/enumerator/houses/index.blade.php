@@ -7,27 +7,56 @@
         <a href="/houses/create" class="btn btn-link btn-sm">Create new house</a>
     </div>
     @if(count($houses) > 0)
-    @foreach($houses as $post)
-    <div class="well mb-2">
-        <div class="row">
-            @if ($post->image_path != null)
-            <div class="col-md-4 col-sm-4">
-                <img style="width:100%" src="/{{$post->image_path}}">
+    <div class="col-md-12 p-0 mb-2">
+        <form action="/houses" method="get">
+            <div class="input-group">
+                <input name="house_number" type="text" class="form-control" placeholder="House number"
+                    aria-label="House number" aria-describedby="basic-addon2"
+                    value="{{ old('searchHouseNumber') ?? $searchHouseNumber }}">
+                <div class="input-group-append">
+                    <button type="submit" class="btn btn-secondary">Search House</button>
+                </div>
             </div>
-            @else
-            <div class="col-md-4 col-sm-4">
-                <img style="width:100%" src="/images/noimage.jpg">
+        </form>
+    </div>
+    @foreach($houses as $house)
+    <div class="card my-1">
+        <div class="card-body d-flex align-items-center">
+            <div class="col-md-9 flex-column">
+                <p class="h5 font-weight-bold">House Number {{ $house->house_number }}</p>
+                <div class="d-flex">
+                    <div class="col-md-4 d-flex flex-column">
+                        <small class="text-muted">House number: {{ $house->house_number }}</small>
+                        <small class="text-muted">Number of rooms: {{ $house->number_of_room }}</small>
+                        <small class="text-muted">House level: {{ $house->house_level }}</small>
+                    </div>
+                    <div class="col-md-4 d-flex flex-column">
+                        <small class="text-muted">Number of sons: {{ $house->number_of_son }}</small>
+                        <small class="text-muted">Number of doughters: {{ $house->number_of_daughter }}</small>
+                        <small class="text-muted">Region: {{ $house->region->name }}</small>
+                    </div>
+                    <div class="col-md-4 d-flex flex-column">
+                        <small class="text-muted">Zone: {{ $house->zone }}</small>
+                        <small class="text-muted">Wereda: {{ $house->wereda }}</small>
+                        <small class="text-muted">Kebele: {{ $house->kebele }}</small>
+                    </div>
+                </div>
+                <small>Created at {{$house->created_at}} ({{$house->created_at->diffForHumans()}}) by
+                    {{$house->user->name}}</small><br>
+                <small>Total alive memebers: {{$house->members->count()}}</small>
+                <br>
+                <small>Total deceased memebers: {{$house->deceased->count()}}</small>
             </div>
-            @endif
-            <div class="col-md-8 col-sm-8">
-                <h3><a href="/houses/{{$post->id}}">{{$post->title}}</a></h3>
-                <small>Written on {{$post->created_at}} ({{$post->created_at->diffForHumans()}}) by
-                    {{$post->user->name}}</small> <br>
-                <small class="text-muted">User type:
-                    {{ $post->user->account_type_text($post->user->user_type) }}</small>
+            <div class="flex-column">
+                <a href="/houses/{{$house->id}}/add-memeber/alive" class="btn btn-link btn-md w-100 my-1">Add Alive
+                    Memeber</a>
+                <a href="/houses/{{$house->id}}/add-memeber/deceased" class="btn btn-link btn-md w-100 my-1">Add
+                    Deceased Memeber</a>
+                <a href="/houses/{{ $house->id }}" class="btn btn-link btn-md w-100 my-1">Show Detail</a>
             </div>
         </div>
     </div>
+
     @endforeach
     {{$houses->links()}}
     @else

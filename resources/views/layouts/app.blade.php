@@ -19,6 +19,35 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <script>
+        function isDisableFunction() {
+            // Get the checkRadio
+            var isDisable = document.getElementById("is_disable");
+            // Get the output sub div form
+            var why_is_disable_form = document.getElementById("why_is_disable_form");
+
+            // If the isDisable is checked, display the sub div form
+            if (isDisable.checked == true){
+                why_is_disable_form.style.display = "block";
+            } else {
+                why_is_disable_form.style.display = "none";
+            }
+        }
+        function isMigrantFunction() {
+            // Get the isMigrant
+            var isMigrant = document.getElementById("is_migrant");
+            // Get the output sub div form
+            var migrant_additional_form = document.getElementById("migrant_additional_form");
+
+            // If the isMigrant is checked, display the sub div form
+            if (isMigrant.checked == true){
+                migrant_additional_form.style.display = "block";
+            } else {
+                migrant_additional_form.style.display = "none";
+            }
+        }
+    </script>
 </head>
 
 <body>

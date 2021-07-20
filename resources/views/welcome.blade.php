@@ -11,9 +11,11 @@
                     This is no any published report yet!
                     <br>
                     <br>
+                    @auth
                     @if(auth()->user()->is_admin)
                     <a href="/publish" class="btn btn-success btn-lg">Create New Publish Report</a>
                     @endif
+                    @endauth
                 </div>
             </div>
         </div>
