@@ -6,7 +6,6 @@
         <h1>Houses</h1>
         <a href="/houses/create" class="btn btn-link btn-sm">Create new house</a>
     </div>
-    @if(count($houses) > 0)
     <div class="col-md-12 p-0 mb-2">
         <form action="/houses" method="get">
             <div class="input-group">
@@ -19,6 +18,7 @@
             </div>
         </form>
     </div>
+    @if(count($houses) > 0)
     @foreach($houses as $house)
     <div class="card my-1">
         <div class="card-body d-flex align-items-center">

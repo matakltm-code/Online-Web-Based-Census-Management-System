@@ -109,28 +109,15 @@ class User extends Authenticatable
     }
 
 
-
-    /**
-     * Get all of the houses for the supervisor user_type
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
     public function houses()
     {
         return $this->hasMany(House::class, 'user_id', 'id');
     }
 
 
-
-    /**
-     * Get all of the family member for the supervisor created in all houses
-     * this will help us easily to know how many family members registered using specific supervisor
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasManyThrough
-     */
-    public function members()
-    {
-        //
-        return $this->hasManyThrough(Member::class, House::class);
-    }
+    // public function members()
+    // {
+    //     // return $this->hasManyThrough(Member::class, House::class, 'id', 'user_id', 'house_id', 'user_id');
+    //     return $this->hasManyThrough(Member::class, House::class);
+    // }
 }

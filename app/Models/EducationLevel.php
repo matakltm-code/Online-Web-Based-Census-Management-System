@@ -10,4 +10,9 @@ class EducationLevel extends Model
     use HasFactory;
     public $timestamps = false;
     protected $guarded = [];
+
+    public function members()
+    {
+        return $this->hasMany(Member::class, 'education_level_id', 'id');
+    }
 }

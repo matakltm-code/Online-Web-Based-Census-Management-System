@@ -20,7 +20,9 @@
 <form action="/houses/add-alive-memeber" method="POST">
     @csrf
 
+    <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
     <input type="hidden" name="house_id" value="{{ $house->id }}">
+    <input type="hidden" name="region_id" value="{{ auth()->user()->region_id }}">
 
     <div class="form-group row">
         <label for="name" class="col-12 col-form-label">Full Name</label>

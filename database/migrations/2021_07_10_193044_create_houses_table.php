@@ -15,14 +15,17 @@ class CreateHousesTable extends Migration
     {
         Schema::create('houses', function (Blueprint $table) {
             $table->id();
-            $table->integer('user_id'); // this is enumerator id b/c -> enumerator user type only can register houses
+            // -----------
+            // Default enumerator value - b/c enumerator user type only can register houses
+            $table->integer('user_id');
+            $table->integer('region_id');
+            // -----------
             $table->integer('house_number');
             $table->integer('number_of_room');
             $table->string('house_level'); // high, medium, low
             $table->integer('number_of_son');
             $table->string('number_of_daughter');
 
-            $table->integer('region_id'); // comes from regions table
             $table->string('zone');
             $table->string('wereda');
             $table->string('town');

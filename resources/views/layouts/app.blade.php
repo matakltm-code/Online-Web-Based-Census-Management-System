@@ -108,9 +108,8 @@
                             <a class="nav-link" href="/resident-feedbacks">{{ __('Residents Feedback') }}</a>
                         </li>
                         @elseif(auth()->user()->is_supervisor)
-                        <li
-                            class="nav-item <?=(Route::current()->uri() == '/counting-report-list-card-of-enumnators' ? 'active':'')?>">
-                            <a class="nav-link" href="/">{{ __('Enumerators Report') }}</a>
+                        <li class="nav-item <?=(Route::current()->uri() == 'enumerator-report' ? 'active':'')?>">
+                            <a class="nav-link" href="/enumerator-report">{{ __('Enumerators Report') }}</a>
                         </li>
                         <li class="nav-item <?=(Route::current()->uri() == 'send-report' ? 'active':'')?>">
                             <a class="nav-link" href="/send-report">{{ __('Send Report') }}</a>

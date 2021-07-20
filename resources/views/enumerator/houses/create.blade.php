@@ -75,80 +75,80 @@
             </div>
         </div>
 
-        <div class="form-group row">
+        {{-- <div class="form-group row">
             <label for="region_id" class="col-12 col-form-label">{{ __('Region') }}</label>
 
-            <div class="col-12">
-                <select id="region_id" name="region_id" class="form-control @error('region_id') is-invalid @enderror"
-                    name="region_id">
-                    <option value="">*** SELECT ***</option>
-                    @foreach (App\Models\Region::all() as $region)
-                    <option value="{{ $region->id }}">{{ $region->name }}</option>
+        <div class="col-12">
+            <select id="region_id" name="region_id" class="form-control @error('region_id') is-invalid @enderror"
+                name="region_id">
+                <option value="">*** SELECT ***</option>
+                @foreach (App\Models\Region::all() as $region)
+                <option value="{{ $region->id }}">{{ $region->name }}</option>
 
-                    @endforeach
-                </select>
+                @endforeach
+            </select>
 
-                @error('region_id')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-                @enderror
-            </div>
+            @error('region_id')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+            @enderror
         </div>
-        <div class="form-group row">
-            <label for="zone" class="col-12 col-form-label">Zone</label>
-            <div class="col-12">
-                <input value="{{ old('zone') }}" id="zone" name="zone" placeholder="Enter zone"
-                    class="form-control  @error('zone') is-invalid @enderror" type="text">
-                @error('zone')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-                @enderror
-            </div>
-        </div>
-        <div class="form-group row">
-            <label for="wereda" class="col-12 col-form-label">Wereda</label>
-            <div class="col-12">
-                <input value="{{ old('wereda') }}" id="wereda" name="wereda" placeholder="Enter wereda"
-                    class="form-control  @error('wereda') is-invalid @enderror" type="text">
-                @error('wereda')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-                @enderror
-            </div>
-        </div>
-        <div class="form-group row">
-            <label for="town" class="col-12 col-form-label">Town</label>
-            <div class="col-12">
-                <input value="{{ old('town') }}" id="town" name="town" placeholder="Enter town"
-                    class="form-control  @error('town') is-invalid @enderror" type="text">
-                @error('town')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-                @enderror
-            </div>
-        </div>
-        <div class="form-group row">
-            <label for="kebele" class="col-12 col-form-label">Kebele</label>
-            <div class="col-12">
-                <input value="{{ old('kebele') }}" id="kebele" name="kebele" placeholder="Enter kebele"
-                    class="form-control  @error('kebele') is-invalid @enderror" type="text">
-                @error('kebele')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-                @enderror
-            </div>
-        </div>
+</div> --}}
+<div class="form-group row">
+    <label for="zone" class="col-12 col-form-label">Zone</label>
+    <div class="col-12">
+        <input value="{{ old('zone') }}" id="zone" name="zone" placeholder="Enter zone"
+            class="form-control  @error('zone') is-invalid @enderror" type="text">
+        @error('zone')
+        <span class="invalid-feedback" role="alert">
+            <strong>{{ $message }}</strong>
+        </span>
+        @enderror
+    </div>
+</div>
+<div class="form-group row">
+    <label for="wereda" class="col-12 col-form-label">Wereda</label>
+    <div class="col-12">
+        <input value="{{ old('wereda') }}" id="wereda" name="wereda" placeholder="Enter wereda"
+            class="form-control  @error('wereda') is-invalid @enderror" type="text">
+        @error('wereda')
+        <span class="invalid-feedback" role="alert">
+            <strong>{{ $message }}</strong>
+        </span>
+        @enderror
+    </div>
+</div>
+<div class="form-group row">
+    <label for="town" class="col-12 col-form-label">Town</label>
+    <div class="col-12">
+        <input value="{{ old('town') }}" id="town" name="town" placeholder="Enter town"
+            class="form-control  @error('town') is-invalid @enderror" type="text">
+        @error('town')
+        <span class="invalid-feedback" role="alert">
+            <strong>{{ $message }}</strong>
+        </span>
+        @enderror
+    </div>
+</div>
+<div class="form-group row">
+    <label for="kebele" class="col-12 col-form-label">Kebele</label>
+    <div class="col-12">
+        <input value="{{ old('kebele') }}" id="kebele" name="kebele" placeholder="Enter kebele"
+            class="form-control  @error('kebele') is-invalid @enderror" type="text">
+        @error('kebele')
+        <span class="invalid-feedback" role="alert">
+            <strong>{{ $message }}</strong>
+        </span>
+        @enderror
+    </div>
+</div>
 
-        <div class="form-group row">
-            <div class="col-12">
-                <button name="submit" type="submit" class="btn btn-primary">Create House</button>
-            </div>
-        </div>
-    </form>
+<div class="form-group row">
+    <div class="col-12">
+        <button name="submit" type="submit" class="btn btn-primary">Create House</button>
+    </div>
+</div>
+</form>
 </div>
 @endsection

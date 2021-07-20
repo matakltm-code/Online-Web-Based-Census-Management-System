@@ -15,6 +15,11 @@ class CreateMembersTable extends Migration
     {
         Schema::create('members', function (Blueprint $table) {
             $table->id();
+            // -----------
+            // Default enumerator value - b/c enumerator user type only can register houses
+            $table->integer('user_id');
+            $table->integer('region_id');
+            // -----------
             $table->integer('house_id');
             $table->string('name');
 

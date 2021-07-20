@@ -47,7 +47,7 @@ class HouseController extends Controller
             'house_level' => 'required',
             'number_of_son' => 'required',
             'number_of_daughter' => 'required',
-            'region_id' => 'required',
+            // 'region_id' => 'required',
             'zone' => 'required',
             'wereda' => 'required',
             'town' => 'required',
@@ -58,12 +58,12 @@ class HouseController extends Controller
         // Create house
         $house = new House;
         $house->user_id = auth()->user()->id;
+        $house->region_id = auth()->user()->region_id;
         $house->house_number = $request->input('house_number');
         $house->number_of_room = $request->input('number_of_room');
         $house->house_level = $request->input('house_level');
         $house->number_of_son = $request->input('number_of_son');
         $house->number_of_daughter = $request->input('number_of_daughter');
-        $house->region_id = $request->input('region_id');
         $house->zone = $request->input('zone');
         $house->wereda = $request->input('wereda');
         $house->town = $request->input('town');
@@ -104,6 +104,8 @@ class HouseController extends Controller
     public function store_alive(Request $request)
     {
         $data = $request->validate([
+            'user_id' => 'required|integer',
+            'region_id' => 'required|integer',
             'house_id' => 'required|integer',
             'name' => 'required',
             'kebele_id_number' => 'integer|nullable',
@@ -132,6 +134,8 @@ class HouseController extends Controller
     public function store_deceased(Request $request)
     {
         $data = $request->validate([
+            'user_id' => 'required|integer',
+            'region_id' => 'required|integer',
             'house_id' => 'required|integer',
             'name' => 'required',
             'sex' => 'required',

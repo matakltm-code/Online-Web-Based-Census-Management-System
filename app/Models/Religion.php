@@ -10,4 +10,10 @@ class Religion extends Model
     use HasFactory;
     public $timestamps = false;
     protected $guarded = [];
+
+
+    public function members()
+    {
+        return $this->hasMany(Member::class, 'religion_id', 'id');
+    }
 }

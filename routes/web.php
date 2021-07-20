@@ -6,6 +6,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ChangepasswordController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\AccountController;
+use App\Http\Controllers\EnumeratorReportForSupervisor;
 use App\Http\Controllers\HouseController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\PublishController;
@@ -71,6 +72,9 @@ Route::get('/publish', [PublishController::class, 'index']);
 Route::post('/publish', [PublishController::class, 'store']);
 
 // supervisor
+Route::get('enumerator-report', [EnumeratorReportForSupervisor::class, 'index']);
+Route::get('generate-report', [EnumeratorReportForSupervisor::class, 'total_report_in_my_region']);
+// Route::get('enumerator-report/{enumerator}', [EnumeratorReportForSupervisor::class, 'show']);
 
 Route::get('send-report', [MessageController::class, 'send_report_for_admin']);
 Route::post('send-report', [MessageController::class, 'store_send_report_for_admin']);
