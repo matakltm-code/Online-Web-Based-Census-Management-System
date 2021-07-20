@@ -16,46 +16,32 @@ class CreateMembersTable extends Migration
         Schema::create('members', function (Blueprint $table) {
             $table->id();
             $table->integer('house_id');
-            $table->string('first_name');
-            $table->string('middle_name');
-            $table->string('last_name');
+            $table->string('name');
+
+            $table->integer('kebele_id_number')->nullable();
+
             $table->timestamp('birth_date');
-            $table->string('region');
-            $table->string('zone');
-            $table->string('wereda');
-            $table->string('town');
-            $table->string('keftegna');
-            $table->string('sa');
-            $table->string('kebele');
-            $table->string('ea');
-            $table->string('type_of_residence');
-            $table->string('current_residence');
-            $table->string('relation');
-            $table->string('residence_status');
-            $table->string('sex');
-            $table->string('religon');
-            $table->string('language');
-            $table->string('disability_status');
-            $table->string('cause');
-            $table->string('previous')->nullable();
-            $table->string('p_region')->nullable();
+            $table->char('sex', 1);
+
+            $table->integer('religion_id'); // from religions table
+            $table->integer('mother_tongue_language_id'); // from mother_tongue_languages table
+
+            $table->boolean('is_disable');
+            $table->string('disability_cause');
+
+            $table->boolean('is_migrant');
+            $table->integer('p_region_id')->nullable();
             $table->string('p_zone')->nullable();
             $table->string('p_wereda')->nullable();
             $table->string('p_town')->nullable();
             $table->string('p_kebele')->nullable();
-            $table->string('number_year')->nullable();
-            $table->string('orphan');
-            $table->string('literacy');
-            $table->string('attending_class');
-            $table->string('grade_completed');
-            $table->string('marital');
-            $table->string('employ');
-            $table->string('reason_unemploy');
-            $table->integer('no_sons');
-            $table->integer('no_daughters');
-            $table->integer('male');
-            $table->integer('female');
-            // $table->timestamp('date');
+
+            $table->boolean('is_orphan');
+            $table->boolean('is_literate');
+            $table->integer('education_level_id')->nullable(); // comes from education_levels table
+            $table->string('marital_status'); // single, married, separated, divorced, or widowed
+
+            $table->boolean('have_income');
 
             $table->timestamps();
         });

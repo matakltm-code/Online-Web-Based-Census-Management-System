@@ -16,26 +16,18 @@ class CreateHousesTable extends Migration
         Schema::create('houses', function (Blueprint $table) {
             $table->id();
             $table->integer('user_id'); // this is enumerator id b/c -> enumerator user type only can register houses
-            $table->string('house_number');
+            $table->integer('house_number');
             $table->integer('number_of_room');
-            $table->string('water');
-            $table->string('toilet');
-            $table->string('sharing_toilet');
-            $table->string('kitchen');
-            $table->string('sharing_kitchen');
-            $table->string('waste_basket');
-            $table->string('tenure');
-            $table->string('type_of_house');
-            $table->string('wall');
-            $table->string('ceiling');
-            $table->string('roof');
-            $table->string('floor');
-            $table->string('house_age');
-            $table->string('cooking');
-            $table->string('light');
-            $table->string('tv');
-            $table->string('radio');
-            $table->string('phone');
+            $table->string('house_level'); // high, medium, low
+            $table->integer('number_of_son');
+            $table->string('number_of_daughter');
+
+            $table->integer('region_id'); // comes from regions table
+            $table->string('zone');
+            $table->string('wereda');
+            $table->string('town');
+            $table->string('kebele');
+
             $table->timestamps();
         });
     }

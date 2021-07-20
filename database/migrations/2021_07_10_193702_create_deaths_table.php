@@ -16,13 +16,10 @@ class CreateDeathsTable extends Migration
         Schema::create('deaths', function (Blueprint $table) {
             $table->id();
             $table->integer('house_id');
-            $table->string('first_name');
-            $table->string('middle_name');
-            $table->string('last_name');
-            $table->integer('age');
-            $table->string('sex');
-            $table->string('cause');
-            $table->string('date');
+            $table->string('name');
+            $table->char('sex', 1);
+            $table->date('date_of_birth');
+            $table->date('date_of_death');
             $table->timestamps();
         });
     }
