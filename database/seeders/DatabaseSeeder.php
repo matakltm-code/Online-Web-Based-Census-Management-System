@@ -15,5 +15,8 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
         $this->call(RegionSeeder::class);
+        $this->call(ReligionSeeder::class);
+        $this->call(EducationLevelSeeder::class);
+        $this->call(MotherTongueLanguageSeeder::class);
     }
 }
